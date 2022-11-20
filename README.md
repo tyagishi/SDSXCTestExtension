@@ -50,5 +50,19 @@ final class PublisherReceiver_tests: XCTestCase {
     enum MyError: Error, Equatable {
             case myError
     }
+
+    // for <Void,Errr> Publisher
+    func test_PublisherReceiver_lastValue() async throws {
+        let pub = PassthroughSubject<Void,Error>()
+        let checker = PublisherReceiver(pub)
+
+        pub.send()
+        try await Task.sleep(for: .seconds(1))
+
+        let lastValue = try XCTUnwrap(checker.lastValue)
+        // lastValue is Void, but it means "received Void"
+        XCTAssertFalse(checker.completed)
+        XCTAssertNil(checker.error)
+    }    
 }
 ```
