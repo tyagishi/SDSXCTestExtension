@@ -9,12 +9,13 @@ import Combine
 import XCTest
 
 extension XCTestCase {
-    class PublisherReceiver<P: Publisher> {
+    public class PublisherReceiver<P: Publisher> {
         private(set) var value: P.Output? = nil
         private(set) var _error: P.Failure? = nil
         private(set) var _completed: Bool = false
         var cancellable: AnyCancellable? = nil
-        init(_ publisher: P) {
+
+        public init(_ publisher: P) {
             cancellable = publisher.sink(
                 receiveCompletion: { completion in
                     switch completion {
@@ -30,15 +31,8 @@ extension XCTestCase {
             )
         }
 
-        public var lastValue: P.Output? {
-            return value
-        }
-
-        public var error: P.Failure? {
-            return _error
-        }
-        public var completed: Bool {
-            return _completed
-        }
+        public var lastValue: P.Output? { return value }
+        public var error: P.Failure? { return _error }
+        public var completed: Bool { return _completed }
     }
 }
