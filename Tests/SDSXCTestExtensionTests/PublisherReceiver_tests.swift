@@ -23,7 +23,7 @@ final class PublisherReceiver_tests: XCTestCase {
         XCTAssertNil(checker.error)
     }
 
-    func test_PublisherReceiver_comletion() async throws {
+    func test_PublisherReceiver_completion() async throws {
         let pub = PassthroughSubject<Int,Error>()
         let checker = PublisherReceiver(pub)
 
