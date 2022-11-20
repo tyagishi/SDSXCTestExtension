@@ -1,12 +1,13 @@
-# SDSXCTestExtension
+//
+//  PublisherReceiver_tests.swift
+//
+//  Created by : Tomoaki Yagishita on 2022/11/20
+//  © 2022  SmallDeskSoftware
+//
+@testable import SDSXCTestExtension
+import Combine
+import XCTest
 
-convenient extension for testing
-
-## PublisherReceiver
-class for testing publisher
-
-test codes explain everything.
-```
 final class PublisherReceiver_tests: XCTestCase {
 
     func test_PublisherReceiver_lastValue() async throws {
@@ -51,4 +52,3 @@ final class PublisherReceiver_tests: XCTestCase {
             case myError
     }
 }
-```
